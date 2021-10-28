@@ -1,0 +1,77 @@
+{% macro groupe(groupe) %}
+
+    <div class="row">
+        <div class="form-group col-md-3 ">
+
+            {{ form_row(groupe.titre,{'attr':{'class':'form-control ','id':'userinput15','placeholder':'Titre','require':'require'}}) }}
+        </div>
+        <div class="form-group col-md-3 ">
+
+            {{ form_row(groupe.lien,{'attr':{'class':'form-control ','id':'userinput16','placeholder':'Description','required':'required'}}) }}
+        </div>
+        <div class="form-group col-md-3 ">
+            {{ form_row(groupe.icon,{'attr':{'class':'form-control motif','id':'userinput16','placeholder':'groupe','required':'required'}}) }}
+        </div>
+        <div class="form-group col-md-2 ">
+            {{ form_row(groupe.ordre,{'attr':{'class':'form-control motif','id':'userinput16','placeholder':'groupe','required':'required'}}) }}
+        </div>
+        <div class="form-group col-md-1  supprimer">
+
+        </div>
+    </div>
+
+{% endmacro groupe %}
+
+
+{#<div class="card card-custom" data-card="true" data-card-tooltips="false" id="kt_card_2">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="card-label">Card Tools</h3>
+        </div>
+        <div class="card-toolbar">
+            <a href="tools.html#" class="btn btn-icon btn-sm btn-primary mr-1" data-card-tool="toggle" data-toggle="tooltip" data-placement="top" title="" data-original-title="Toggle Card">
+                <i class="ki ki-arrow-down icon-nm"></i>
+            </a>
+            <a href="tools.html#" class="btn btn-icon btn-sm btn-success mr-1" data-card-tool="reload" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reload Card">
+                <i class="ki ki-reload icon-nm"></i>
+            </a>
+            <a href="tools.html#" class="btn btn-icon btn-sm btn-warning" data-card-tool="remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove Card">
+                <i class="ki ki-close icon-nm"></i>
+            </a>
+        </div>
+    </div>
+    <div class="card-body">
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled.</p>
+    </div>
+</div>#}
+{#
+
+<div class="card card-custom">
+    <div class="card-header">
+        <div class="card-title">
+            <span class="card-icon">
+                <i class="flaticon2-chat-1 text-primary"></i>
+            </span>
+            <h3 class="card-label">Card Footer
+                <small>sub title</small>
+            </h3>
+        </div>
+        <div class="card-toolbar">
+            <a href="general.html#" class="btn btn-sm btn-success font-weight-bold">
+                <i class="flaticon2-cube"></i>Reports</a>
+        </div>
+    </div>
+    <div class="card-body">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+        been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+        scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+        industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
+        scrambled.
+    </div>
+    <div class="card-footer d-flex justify-content-between">
+        <a href="general.html#" class="btn btn-light-primary font-weight-bold">Manage</a>
+        <a href="general.html#" class="btn btn-outline-secondary font-weight-bold">Learn more</a>
+    </div>
+</div>#}

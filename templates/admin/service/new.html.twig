@@ -1,0 +1,120 @@
+{% extends 'admin/includes/_index.html.twig' %}
+
+{% from 'admin/macros/image.html.twig' import image %}
+
+{% block titre %}Ajout{% endblock %}
+{% block inline_stylesheets %}
+    <link href="{{ asset('admin/assets/css/upload.css') }}" rel="stylesheet" type="text/css" />
+{% endblock %}
+{% block page_content %}
+    <div class="card card-custom">
+        <div class="card-header">
+            <div class="card-title">
+						<span class="card-icon">
+									<i class="flaticon2-layers text-primary"></i>
+									</span>
+                <h3 class="card-label">Ajouter un Service</h3>
+            </div>
+        </div>
+        <br>
+        <div class="card-body py-0">
+            {% form_theme form 'widget/fields-block.html.twig' %}
+
+            {{ form_start(form, {'attr': {'role':'form', 'class': 'form','enctype':'multipart/form-data'}}) }}
+
+            <div class="row">
+                <div class="form-group col-md-8 mb-2">
+                    <label class="sr-onl" for="userinput1">Titre</label>
+                    {{ form_widget(form.titre,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Titre'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 mb-2">
+                   {# <label class="sr-onl" for="userinput1">Image</label>#}
+                  {#  {{ form_widget(form.image,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Image'}}) }}#}
+                    <div class="image-input image-input-outline" id="kt_image_1">
+                        <div class="image-input-wrapper" style="background-image: url('{{ asset('admin/assets/media/users/blank.png') }}')"></div>
+                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                            <i class="fa fa-pen icon-sm text-muted"></i>
+                            {{ form_widget(form.image,{'attr':{'type':'file','name':'profile_avatar','accept':'.png, .jpg, .jpeg','placeholder':'Image'}}) }}
+                           {# <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg">#}
+                            <input type="hidden" name="profile_avatar_remove">
+                        </label>
+                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="" data-original-title="Cancel avatar">
+															<i class="ki ki-bold-close icon-xs text-muted"></i>
+														</span>
+                    </div>
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+
+
+            </div>
+            <div class="row">
+                {#<div class="form-group col-md-3 mb-2">
+                    <label class="sr-onl" for="userinput1">Image</label>
+                    <div class="col-md-3 imgUp">
+                        <div class="imagePreview"></div>
+                        <label class="btn btn-primary">
+                            Logo  {{ form_widget(form.image,{'attr':{'class':'uploadFile img','id':'userinput1','placeholder':'Image'}}) }}
+                            #}{#    <input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">#}{#
+                        </label>
+                    </div>
+                </div>#}
+
+                <div class="form-group col-md-12 mb-2">
+                    <label class="sr-onl" for="userinput2">Description</label>
+                    {{ form_widget(form.description,{'attr':{'class':'form-control border-primary','id':'userinput2','placeholder':'Description','required':'required'}}) }}
+
+                </div>
+            </div>
+            <hr>
+            <div class="col-lg-12 intervention" id="intervention"  data-prototype="{{ image(form.images.vars.prototype)|e('html_attr') }}">
+                <div class="form-section  col-md-12">
+
+                    <h4 class=""><i class="flaticon2-layers text-primary"></i> Ajoutez des images</h4>
+
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-4">
+                        <button type="button" class="waves-effect waves-light btn btn-primary mb-5 add_intervention">
+                            <i class="fa fa-plus-circle"></i></button>
+                    </div>
+                    <div class="col-8"></div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-7">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:4%;font-weight: bolder">Titre</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:-2%;font-weight: bolder">Image</label>
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+
+                </div>
+                {% for row in form.images %}
+                    <div class="container col-md-12" >
+                        {{ image(row|e) }}
+                    </div>
+                {% endfor %}
+                <span class="after"></span>
+            </div><div class="card-footer">
+                <button type="submit" class="btn btn-primary mr-2">Valider</button>
+                <a  class="btn btn-secondary" href="{{ path('module') }}">Annuler</a>
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>
+{% endblock %}
+   {% block java %}
+       <script src="{{ asset('admin/assets/js/groupe.js') }}"></script>
+       <script src="{{ asset('admin/assets/js/upload.js') }}"></script>
+       <script src="{{ asset('admin/assets/js/pages/crud/file-upload/image-input-v=7.1.2.js') }}"></script>
+       <script>
+           $('select').select2();
+       </script>
+   {% endblock %}

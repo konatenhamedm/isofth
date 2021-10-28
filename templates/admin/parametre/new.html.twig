@@ -1,0 +1,55 @@
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('admin/assets/css/image.css') }}">
+{% endblock %}
+{% block page_content %}
+    {% form_theme form 'widget/fields-block.html.twig' %}
+    <div class="modal-header">
+        <h5 class="modal-title" id="myLargeModalLabel">Création de paramètre</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    </div>
+    {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+    <div class="modal-body ">
+        {# {{ include('includes/ajax/response.html.twig') }} #}
+
+        <div class="row">
+            <div class="form-group col-md-12 mb-2">
+                <label class="sr-onl" for="userinput1">Titre</label>
+                {{ form_widget(form.titre,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Titre','required':'required'}}) }}
+                {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-3 imgUp">
+                <div class="imagePreview"></div>
+                <label class="btn btn-primary">
+                    Logo  {{ form_widget(form.logo,{'attr':{'class':'uploadFile img','id':'userinput1','placeholder':'Logo'}}) }}
+                    {#    <input type="file" class="uploadFile img" value="Upload Photo" style="width: 0px;height: 0px;overflow: hidden;">#}
+                </label>
+            </div><!-- col-2 -->
+        </div><!-- row -->
+        <div class="row">
+            <div class="form-group col-md-6 mb-2">
+                <label class="sr-onl" for="userinput1">Couleur header</label>
+                {{ form_widget(form.couleurHeader,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Couleur header'}}) }}
+                {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label class="sr-onl" for="userinput2">Couleur side</label>
+                {{ form_widget(form.couleurSide,{'attr':{'class':'form-control border-primary','id':'userinput2','placeholder':'Couleur side'}}) }}
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        {# {{ include('_includes/ajax/loader.html.twig') }} #}
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+        <button type="submit" class="btn btn-primary btn-ajax">Valider</button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('admin/assets/js/image.js') }}"></script>
+{% endblock %}
