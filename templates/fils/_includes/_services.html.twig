@@ -14,7 +14,7 @@
                     <div class="services-card">
                         <i class="{{ service.icon }}"></i>
                         <h3><a href="{{ path('service_detail',{'id':service.id}) }}">{{ service.titre }}</a></h3>
-                        <p>{{ service.description }}</p>
+                        <p>{{ service.extrait }}</p>
                         <a href="{{ path('service_detail',{'id':service.id}) }}" class="learn-btn">Lire plus <i class="bx bx-chevron-right"></i></a>
                     </div>
                 </div>
