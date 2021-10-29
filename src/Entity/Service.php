@@ -44,6 +44,16 @@ class Service
      */
     private $images;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $icon;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $extrait;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
@@ -128,6 +138,30 @@ class Service
     public function setActive(int $active): self
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    public function getIcon(): ?string
+    {
+        return $this->icon;
+    }
+
+    public function setIcon(string $icon): self
+    {
+        $this->icon = $icon;
+
+        return $this;
+    }
+
+    public function getExtrait(): ?string
+    {
+        return $this->extrait;
+    }
+
+    public function setExtrait(string $extrait): self
+    {
+        $this->extrait = $extrait;
 
         return $this;
     }

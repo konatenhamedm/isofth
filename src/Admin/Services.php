@@ -3,6 +3,7 @@
 namespace App\Admin;
 
 use App\Entity\Groupe;
+use App\Entity\Service;
 use App\Entity\Icon;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -25,6 +26,10 @@ class Services{
     public  function  listeModule(){
         $repo = $this->em->getRepository(Groupe::class)->afficheModule();
 
+        return $repo;
+    }
+    public  function  listeServices(){
+        $repo = $this->em->getRepository(Service::class)->findService();
         return $repo;
     }
     public  function  liste(){

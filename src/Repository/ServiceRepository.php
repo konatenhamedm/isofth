@@ -26,6 +26,15 @@ class ServiceRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+    public function findDetailsService()
+    {
+        return $this->createQueryBuilder('s')
+            ->orderBy('s.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     // /**
     //  * @return Service[] Returns an array of Service objects
     //  */

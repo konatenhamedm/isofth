@@ -18,7 +18,17 @@ class ImagesRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Images::class);
     }
-
+    public function findImages($value)
+    {
+        return $this->createQueryBuilder('i')
+            ->andWhere('i.service = :val')
+            ->setParameter('val', $value)
+            ->orderBy('i.id', 'ASC')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     // /**
     //  * @return Images[] Returns an array of Images objects
     //  */

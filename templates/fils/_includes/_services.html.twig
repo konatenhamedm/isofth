@@ -8,75 +8,22 @@
             </p>
         </div>
         <div class="row pt-45">
-            <div class="col-lg-3 col-sm-6">
-                <div class="services-card">
-                    <i class="flaticon-consultant"></i>
-                    <h3><a href="service-details.html">IT Consulting</a></h3>
-                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el. </p>
-                    <a href="service-details.html" class="learn-btn">Learn More <i class="bx bx-chevron-right"></i></a>
+            {% for service in menu.listeServices()  %}
+                <div class="col-lg-3 col-sm-6">
+                    <div class="services-card">
+                        <i class="{{ service.icon }}"></i>
+                        <h3><a href="{{ path('service_detail',{'id':service.id}) }}">{{ service.titre }}</a></h3>
+                        <p>{{ service.description }}</p>
+                        <a href="{{ path('service_detail',{'id':service.id}) }}" class="learn-btn">Lire plus <i class="bx bx-chevron-right"></i></a>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="services-card">
-                    <i class="flaticon-consulting"></i>
-                    <h3><a href="service-details.html">Cloud Computing</a></h3>
-                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el. </p>
-                    <a href="service-details.html" class="learn-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="services-card">
-                    <i class="flaticon-web-development"></i>
-                    <h3><a href="service-details.html">Web Development</a></h3>
-                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el. </p>
-                    <a href="service-details.html" class="learn-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="services-card">
-                    <i class="flaticon-stats"></i>
-                    <h3><a href="service-details.html">Business Reform</a></h3>
-                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el. </p>
-                    <a href="service-details.html" class="learn-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
-        <div class="row pt-45">
-            <div class="col-lg-3 col-sm-6">
-                <div class="services-card">
-                    <i class="flaticon-consultant"></i>
-                    <h3><a href="service-details.html">IT Consulting</a></h3>
-                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el. </p>
-                    <a href="service-details.html" class="learn-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="services-card">
-                    <i class="flaticon-consulting"></i>
-                    <h3><a href="service-details.html">Cloud Computing</a></h3>
-                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el. </p>
-                    <a href="service-details.html" class="learn-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="services-card">
-                    <i class="flaticon-web-development"></i>
-                    <h3><a href="service-details.html">Web Development</a></h3>
-                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el. </p>
-                    <a href="service-details.html" class="learn-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6">
-                <div class="services-card">
-                    <i class="flaticon-stats"></i>
-                    <h3><a href="service-details.html">Business Reform</a></h3>
-                    <p>Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendauctor nisi el. </p>
-                    <a href="service-details.html" class="learn-btn">Learn More <i class="bx bx-chevron-right"></i></a>
-                </div>
-            </div>
-        </div>
+
     </div>
     <div class="service-shape">
-        <img src="assets/images/shape/service-shape1.png" alt="Images">
+        <img src="fils/assets/images/shape/service-shape1.png" alt="Images">
     </div>
 </section>
+
+
