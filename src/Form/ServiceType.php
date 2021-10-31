@@ -16,6 +16,8 @@ class ServiceType extends AbstractType
         $builder
             ->add('titre')
             ->add('description')
+            ->add('icon')
+            ->add('extrait')
             ->add('image', FileType::class, [
                 'mapped' => false,
                 'required' => false,

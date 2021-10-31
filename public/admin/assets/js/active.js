@@ -18,13 +18,12 @@ function onClickBtnActive(event){
                 class_.classList.replace('btn-hover-danger','btn-light-success');
             }
 
-           /* if(class_.classList.contains('btn-light-success')){
-                class_.classList.replace('btn-light-danger','btn-light-success');
-            }else{
-
-                class_.classList.replace('btn-light-success','btn-light-danger');
-            }
-*/
+            /* if(class_.classList.contains('btn-light-success')){
+                 class_.classList.replace('btn-light-danger','btn-light-success');
+             }else{
+                 class_.classList.replace('btn-light-success','btn-light-danger');
+             }
+ */
             if(icon.classList.contains('fa-check')){
 
                 icon.classList.replace('fa-check','fa-ban');

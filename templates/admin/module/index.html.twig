@@ -24,8 +24,38 @@
 
         <div class="card-body py-0">
             <!--begin::Table-->
-            <div class="table-responsive">
-                <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
+            <div class="table-responsive mt-5">
+                <table id="datatable"
+                       class="table table-separate table-head-custom table-checkable dataTable dtr-inline">
+                    {% include 'admin/header_tableau/header.html.twig' with {'ent':tableau } %}
+                    <tbody>
+                    {% for key, data in pagination.data %}
+                        <tr>
+                            <td >
+                                <label class="checkbox checkbox-lg checkbox-inline">
+                                    <input type="checkbox" value="1">
+                                    <span></span>
+                                </label>
+                            </td>
+
+
+
+                            <td >
+                                {{ data.titre }}
+                            </td>
+                            <td >
+                                {{ data.parent.titre }}
+                            </td>
+
+                            <td class="active">
+                                {% if data.active==1 %}Activé{% else %}Désactivé{% endif %}
+                            </td>
+                            {% include 'admin/action/action.html.twig' with {'data':data ,'module':menu.getRoute ,'modal':modal} %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+               {# <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
                     {% include 'admin/header_tableau/header.html.twig' with {'ent':tableau } %}
                     <tbody>
                     {% for key, data in pagination.data %}
@@ -60,7 +90,7 @@
                     {% endfor %}
                     </tbody>
                 </table>
-                {% include 'admin/pagination/pagination.html.twig' with {'route':menu.getRoute } %}
+                {% include 'admin/pagination/pagination.html.twig' with {'route':menu.getRoute } %}#}
             </div>
             <!--end::Table-->
         </div>

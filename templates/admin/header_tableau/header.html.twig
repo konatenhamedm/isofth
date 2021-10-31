@@ -1,15 +1,15 @@
-<thead>
-<tr class="text-left">
-    <th class="pl-0" style="width: 30px">
+<thead style="background: #187DE4;font-weight: bolder;color: white">
+<tr style="font-weight: bolder;color: white">
+    <th style="width: 15px">
         <label class="checkbox checkbox-lg checkbox-inline mr-2">
             <input type="checkbox" value="1">
             <span></span>
         </label>
     </th>
     {% for ent in tableau %}
-        <th class="pl-0" style="min-width: 120px">{{ ent }}</th>
+        <th >{{ ent }}</th>
     {% endfor %}
-    <th style="min-width: 120px">Status</th>
-    <th class="pr-0 text-right" style="min-width: 140px">Action</th>
+    <th >Status</th>
+    <th style="width: 150px">Action</th>
 </tr>
 </thead>

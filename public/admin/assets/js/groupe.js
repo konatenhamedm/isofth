@@ -41,7 +41,7 @@ $(document).ready(function() {
     }
 
     function addRemoveButton($card) {
-        var $removeButton = $('<a href="#" class="btn btn-danger supprimer" style="margin-left: -16px">x</a>');
+        var $removeButton = $('<button type="button" class="waves-effect waves-light btn btn-danger  supprimer" style="margin-left: -16px"><i class="fa fa-window-close"></i></button>');
         /*var $cardFooter = $('<div class="modal-footer"></div>').append($removeButton);*/
 
         $removeButton.click(function (e) {

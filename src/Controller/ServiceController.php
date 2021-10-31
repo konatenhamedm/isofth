@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Admin\PaginationService;
 use App\Admin\UploaderHelper;
 use App\Entity\Service;
+use Gedmo\Sluggable\Util\Urlizer;
 use App\Form\ServiceType;
 use App\Repository\ServiceRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -60,17 +61,15 @@ class ServiceController extends AbstractController
                 /** @var UploadedFile $brochureFile */
             $brochureFile  = $form->get('images')->getData(); //get('image_prod')->getData();
 
-                foreach ($brochureFile  as $image) {
+            foreach ($brochureFile  as $image) {
 
-                    $file = new File($image->getPath());
-                    $newFilename = md5(uniqid()) . '.' . $file->guessExtension();
-                    // $fileName = md5(uniqid()).'.'.$file->guessExtension();
-                    $file->move($this->getParameter('images_directory'), $image->getPath());
-                    $image->setPath($newFilename);
-                   /* $em = $this->getDoctrine()->getManager();
-                    $em->persist($image);
-                    $em->flush();*/
-                }
+                $file = new File($image->getPath());
+                $originalFilename = pathinfo($image->getPath(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid() . '.' . $file->guessExtension();
+                $file->move($this->getParameter('images_directory'),  $newFilename);
+                $image->setPath($newFilename);
+
+            }
 
                 //$brochureFile = $form->get('image')->getData();
                 $uploadedFile = $form['image']->getData();
@@ -106,7 +105,7 @@ class ServiceController extends AbstractController
     /**
      * @Route("/{id}/edit", name="service_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Service $service, EntityManagerInterface  $em): Response
+    public function edit(Request $request, Service $service, EntityManagerInterface  $em,UploaderHelper  $uploaderHelper): Response
     {
 
         $form = $this->createForm(serviceType::class, $service, [
@@ -124,6 +123,26 @@ class ServiceController extends AbstractController
             $redirect = $this->generateUrl('service');
 
             if ($form->isValid()) {
+                /** @var UploadedFile $brochureFile */
+                $brochureFile  = $form->get('images')->getData(); //get('image_prod')->getData();
+
+                foreach ($brochureFile  as $image) {
+
+                    $file = new File($image->getPath());
+                    $originalFilename = pathinfo($image->getPath(), PATHINFO_FILENAME);
+                    $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid() . '.' . $file->guessExtension();
+                    $file->move($this->getParameter('images_directory'),  $newFilename);
+                    $image->setPath($newFilename);
+
+                }
+
+                //$brochureFile = $form->get('image')->getData();
+                $uploadedFile = $form['image']->getData();
+
+                if ($uploadedFile) {
+                    $newFilename = $uploaderHelper->uploadImage($uploadedFile);
+                    $service->setImage($newFilename);
+                }
                 $em->persist($service);
                 $em->flush();
 

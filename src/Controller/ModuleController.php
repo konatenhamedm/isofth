@@ -171,8 +171,6 @@ class ModuleController extends AbstractController
      */
     public function delete(Request $request, EntityManagerInterface $em, Module $module): Response
     {
-
-
         $form = $this->createFormBuilder()
             ->setAction(
                 $this->generateUrl(

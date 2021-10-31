@@ -1,6 +1,8 @@
 {% extends 'admin/includes/_index.html.twig' %}
 
-{% from 'admin/macros/groupe.html.twig' import groupe %}
+
+{% from 'admin/macros/image.html.twig' import image %}
+
 
 {% block titre %}Modification{% endblock %}
 
@@ -19,76 +21,95 @@
       <br>
         <div class="card-body py-0">
             {% form_theme form 'widget/fields-block.html.twig' %}
-                {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
 
-                <div class="row">
-                    <div class="form-group col-md-3 mb-2">
-                        <label class="sr-onl" for="userinput1">Titre</label>
-                        {{ form_widget(form.titre,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Titre','required':'required'}}) }}
-                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
-                    </div>
-                    <div class="form-group col-md-3 mb-2">
-                        <label class="sr-onl" for="userinput1">Icon</label>
-                        {{ form_widget(form.icon,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Icon'}}) }}
-                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
-                    </div>
-                    <div class="form-group col-md-3 mb-2">
-                        <label class="sr-onl" for="userinput2">Ordre</label>
-                        {{ form_widget(form.ordre,{'attr':{'class':'form-control border-primary','id':'userinput2','placeholder':'Ordre','required':'required'}}) }}
+            {{ form_start(form, {'attr': {'role':'form', 'class': 'form','enctype':'multipart/form-data'}}) }}
 
-                    </div>
-                    <div class="form-group col-md-3 mb-2">
-                        <label class="sr-onl" for="userinput2">Parent</label>
-                        {{ form_widget(form.parent,{'attr':{'class':'form-control border-primary','id':'userinput2','placeholder':'Parent'}}) }}
-
-                    </div>
+            <div class="row">
+                <div class="form-group col-md-4 mb-2">
+                    <label class="sr-onl" for="userinput1">Titre</label>
+                    {{ form_widget(form.titre,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Titre'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
                 </div>
-                <hr>
-                <div class="col-lg-12 intervention" id="intervention"  data-prototype="{{ groupe(form.groupes.vars.prototype)|e('html_attr') }}">
-                    <div class="form-section  col-md-12">
+                <div class="form-group col-md-4 mb-2">
+                    <label class="sr-onl" for="userinput1">Icon</label>
+                    {{ form_widget(form.icon,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Icon'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 mb-2">
+                    <label class="sr-onl" for="userinput1">Extrait</label>
+                    {{ form_widget(form.extrait,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Extrait'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+            </div>
+            <div class="row">
 
-                        <h4 class=""><i class="fa fa-ticket "></i>Ajoutez des groupes</h4>
-
+                <div class="form-group col-md-1 mb-2">
+                    {# <label class="sr-onl" for="userinput1">Image</label>#}
+                    {#  {{ form_widget(form.image,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Image'}}) }}#}
+                    <div class="image-input image-input-outline" id="kt_image_1">
+                        <div class="image-input-wrapper" style="background-image: url('{{ asset('admin/assets/media/users/blank.png') }}')"></div>
+                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
+                            <i class="fa fa-pen icon-sm text-muted"></i>
+                            {{ form_widget(form.image,{'attr':{'type':'file','name':'profile_avatar','accept':'.png, .jpg, .jpeg','placeholder':'Image'}}) }}
+                            {# <input type="file" name="profile_avatar" accept=".png, .jpg, .jpeg">#}
+                            <input type="hidden" name="profile_avatar_remove">
+                        </label>
+                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="" data-original-title="Cancel avatar">
+															<i class="ki ki-bold-close icon-xs text-muted"></i>
+														</span>
                     </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <button type="button" class="waves-effect waves-light btn btn-primary mb-5 add_intervention">
-                                <i class="fa fa-plus-circle"></i>Ajoutez un groupe</button>
-                        </div>
-                        <div class="col-8"></div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label class="sr-onl cacher" for="userinput1" style="margin-left:6%;font-weight: bolder">Titre</label>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="sr-onl cacher" for="userinput1" style="margin-left:4%;font-weight: bolder">Lien</label>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="sr-onl cacher" for="userinput1" style="margin-left:1%;font-weight: bolder">Icon</label>
-                        </div>
-                        <div class="col-md-2">
-                            <label class="sr-onl cacher" for="userinput1" style="margin-left:1%;font-weight: bolder">Ordre</label>
-                        </div>
-                        <div class="col-md-1">
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-11 mb-3 mt-5">
+                    <label class="sr-onl" for="userinput2">Description</label>
+                    {{ form_widget(form.description,{'attr':{'class':'form-control border-primary','id':'userinput2','placeholder':'Description','required':'required'}}) }}
 
-                        </div>
+                </div>
+            </div>
+            <hr>
+            <div class="col-lg-12 intervention" id="intervention"  data-prototype="{{ image(form.images.vars.prototype)|e('html_attr') }}">
+                <div class="form-section  col-md-12">
 
+                    <h4 class=""><i class="flaticon2-layers text-primary"></i> Ajoutez des images</h4>
+
+                </div>
+                {#   <br>
+                <div class="row">
+                    <div class="col-4">
+                        <button type="button" class="waves-effect waves-light btn btn-primary mb-5 add_intervention">
+                            <i class="fa fa-plus-circle"></i></button>
                     </div>
-                    {% for row in form.groupes %}
-                        <div class="container col-md-12" >
-                            {{ groupe(row|e) }}
-                        </div>
-                    {% endfor %}
-                    <span class="after"></span>
-                </div><div class="card-footer">
-                <button type="submit" class="btn btn-primary mr-2">Modifier</button>
+                    <div class="col-8"></div>
+                </div>
+                <br>#}
+                <div class="row">
+
+                    <div class="col-md-7">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:7%;font-weight: bolder;margin-top: 16px">TITRE</label>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:4%;font-weight: bolder;margin-top: 16px">Image</label>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="waves-effect waves-light btn btn-primary  add_intervention" style="margin-left: -38px">
+                            <i class="fa fa-plus-circle"></i></button>
+                    </div>
+
+                </div><br>
+                {% for row in form.images %}
+                    <div class="container col-md-12" >
+                        {{ image(row|e) }}
+                    </div>
+                {% endfor %}
+                <span class="after"></span>
+            </div><div class="card-footer">
+                <button type="submit" class="btn btn-primary mr-2">Valider</button>
                 <a  class="btn btn-secondary" href="{{ path('module') }}">Annuler</a>
             </div>
-                {{ form_end(form) }}
+            {{ form_end(form) }}
 
         </div>
+
 
     </div>
 {% endblock %}

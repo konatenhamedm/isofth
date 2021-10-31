@@ -49,33 +49,34 @@
 
                     <h4 class=""><i class="flaticon2-layers text-primary"></i>Ajoutez des groupes</h4>
 
-                </div><br>
-                <div class="row">
+                </div>
+             {#   <div class="row">
                     <div class="col-4">
                         <button type="button" class="waves-effect waves-light btn btn-primary mb-5 add_intervention">
                             <i class="fa fa-plus-circle"></i>Ajoutez un groupe</button>
                     </div>
                     <div class="col-8"></div>
-                </div>
+                </div>#}
                 <br>
-                <div class="row">
+                <div class="row" >
                     <div class="col-md-3">
-                        <label class="sr-onl cacher" for="userinput1" style="margin-left:6%;font-weight: bolder">Titre</label>
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:7%;font-weight: bolder;margin-top: 16px">TITRE</label>
                     </div>
                     <div class="col-md-3">
-                        <label class="sr-onl cacher" for="userinput1" style="margin-left:4%;font-weight: bolder">Lien</label>
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:4%;font-weight: bolder;margin-top: 16px">LIEN</label>
                     </div>
                     <div class="col-md-3">
-                        <label class="sr-onl cacher" for="userinput1" style="margin-left:1%;font-weight: bolder">Icon</label>
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:1%;font-weight: bolder;margin-top: 16px">ICON</label>
                     </div>
                     <div class="col-md-2">
-                        <label class="sr-onl cacher" for="userinput1" style="margin-left:1%;font-weight: bolder">Ordre</label>
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:-5%;font-weight: bolder;margin-top: 16px">ORDRE</label>
                     </div>
                     <div class="col-md-1">
-
+                        <button type="button" class="waves-effect waves-light btn btn-primary  add_intervention" style="margin-left: -38px">
+                            <i class="fa fa-plus-circle"></i></button>
                     </div>
 
-                </div>
+                </div><br>
                 {% for row in form.groupes %}
                     <div class="container col-md-12" >
                         {{ groupe(row|e) }}

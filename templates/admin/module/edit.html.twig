@@ -19,74 +19,75 @@
       <br>
         <div class="card-body py-0">
             {% form_theme form 'widget/fields-block.html.twig' %}
-                {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+            {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
 
-                <div class="row">
-                    <div class="form-group col-md-3 mb-2">
-                        <label class="sr-onl" for="userinput1">Titre</label>
-                        {{ form_widget(form.titre,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Titre','required':'required'}}) }}
-                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
-                    </div>
-                    <div class="form-group col-md-3 mb-2">
-                        <label class="sr-onl" for="userinput1">Icon</label>
-                        {{ form_widget(form.icon,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Icon'}}) }}
-                        {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
-                    </div>
-                    <div class="form-group col-md-3 mb-2">
-                        <label class="sr-onl" for="userinput2">Ordre</label>
-                        {{ form_widget(form.ordre,{'attr':{'class':'form-control border-primary','id':'userinput2','placeholder':'Ordre','required':'required'}}) }}
-
-                    </div>
-                    <div class="form-group col-md-3 mb-2">
-                        <label class="sr-onl" for="userinput2">Parent</label>
-                        {{ form_widget(form.parent,{'attr':{'class':'form-control border-primary','id':'userinput2','placeholder':'Parent'}}) }}
-
-                    </div>
+            <div class="row">
+                <div class="form-group col-md-3 mb-2">
+                    <label class="sr-onl" for="userinput1">Titre</label>
+                    {{ form_widget(form.titre,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Titre','required':'required'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
                 </div>
-                <hr>
-                <div class="col-lg-12 intervention" id="intervention"  data-prototype="{{ groupe(form.groupes.vars.prototype)|e('html_attr') }}">
-                    <div class="form-section  col-md-12">
+                <div class="form-group col-md-3 mb-2">
+                    <label class="sr-onl" for="userinput1">Icon</label>
+                    {{ form_widget(form.icon,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Icon'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-3 mb-2">
+                    <label class="sr-onl" for="userinput2">Ordre</label>
+                    {{ form_widget(form.ordre,{'attr':{'class':'form-control border-primary','id':'userinput2','placeholder':'Ordre','required':'required'}}) }}
 
-                        <h4 class=""><i class="fa fa-ticket "></i>Ajoutez des groupes</h4>
+                </div>
+                <div class="form-group col-md-3 mb-2">
+                    <label class="sr-onl" for="userinput2">Parent</label>
+                    {{ form_widget(form.parent,{'attr':{'class':'form-control border-primary','id':'userinput2','placeholder':'Parent'}}) }}
 
+                </div>
+            </div>
+            <hr>
+            <div class="col-lg-12 intervention" id="intervention"  data-prototype="{{ groupe(form.groupes.vars.prototype)|e('html_attr') }}">
+                <div class="form-section  col-md-12">
+
+                    <h4 class=""><i class="flaticon2-layers text-primary"></i>Ajoutez des groupes</h4>
+
+                </div>
+                {#   <div class="row">
+                    <div class="col-4">
+                        <button type="button" class="waves-effect waves-light btn btn-primary mb-5 add_intervention">
+                            <i class="fa fa-plus-circle"></i>Ajoutez un groupe</button>
                     </div>
-                    <div class="row">
-                        <div class="col-4">
-                            <button type="button" class="waves-effect waves-light btn btn-primary mb-5 add_intervention">
-                                <i class="fa fa-plus-circle"></i>Ajoutez un groupe</button>
-                        </div>
-                        <div class="col-8"></div>
+                    <div class="col-8"></div>
+                </div>#}
+                <br>
+                <div class="row" >
+                    <div class="col-md-3">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:7%;font-weight: bolder;margin-top: 16px">TITRE</label>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <label class="sr-onl cacher" for="userinput1" style="margin-left:6%;font-weight: bolder">Titre</label>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="sr-onl cacher" for="userinput1" style="margin-left:4%;font-weight: bolder">Lien</label>
-                        </div>
-                        <div class="col-md-3">
-                            <label class="sr-onl cacher" for="userinput1" style="margin-left:1%;font-weight: bolder">Icon</label>
-                        </div>
-                        <div class="col-md-2">
-                            <label class="sr-onl cacher" for="userinput1" style="margin-left:1%;font-weight: bolder">Ordre</label>
-                        </div>
-                        <div class="col-md-1">
-
-                        </div>
-
+                    <div class="col-md-3">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:4%;font-weight: bolder;margin-top: 16px">LIEN</label>
                     </div>
-                    {% for row in form.groupes %}
-                        <div class="container col-md-12" >
-                            {{ groupe(row|e) }}
-                        </div>
-                    {% endfor %}
-                    <span class="after"></span>
-                </div><div class="card-footer">
-                <button type="submit" class="btn btn-primary mr-2">Modifier</button>
+                    <div class="col-md-3">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:1%;font-weight: bolder;margin-top: 16px">ICON</label>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:-5%;font-weight: bolder;margin-top: 16px">ORDRE</label>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="button" class="waves-effect waves-light btn btn-primary  add_intervention" style="margin-left: -38px">
+                            <i class="fa fa-plus-circle"></i></button>
+                    </div>
+
+                </div><br>
+                {% for row in form.groupes %}
+                    <div class="container col-md-12" >
+                        {{ groupe(row|e) }}
+                    </div>
+                {% endfor %}
+                <span class="after"></span>
+            </div><div class="card-footer">
+                <button type="submit" class="btn btn-primary mr-2">Editer</button>
                 <a  class="btn btn-secondary" href="{{ path('module') }}">Annuler</a>
             </div>
-                {{ form_end(form) }}
+            {{ form_end(form) }}
 
         </div>
 

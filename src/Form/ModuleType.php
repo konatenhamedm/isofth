@@ -18,7 +18,7 @@ class ModuleType extends AbstractType
     {
         $builder
             ->add('titre')
-            ->add('icon',TextareaType::class)
+            ->add('icon',TextType::class)
             ->add('ordre')
             ->add('parent',EntityType::class, [
         'class' => ModuleParent::class,

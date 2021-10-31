@@ -32,6 +32,13 @@ class DefaultController extends AbstractController
 
         ]);
     }
+    /**
+     * @Route("/data",name="data")
+     */
+    public function datatable():Response
+    {
+        return $this->render('datatable.html.twig');
+    }
 
 
 }
