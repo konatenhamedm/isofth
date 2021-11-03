@@ -19,7 +19,7 @@ class AppFixtures extends Fixture
         $user = new User();
 
         $user->setName('konate')
-             ->setemail('konatenhamed')
+             ->setemail('konatenhamed@gmail.com')
              ->setPassword('$2y$13$qo4/UPpc/bBO5ru6zXxnFuDwJxxnf5x1BbqvX5ugyLodW9rzqSY2S');
 
         $manager->persist($parent);
