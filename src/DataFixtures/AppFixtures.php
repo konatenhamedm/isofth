@@ -14,7 +14,15 @@ class AppFixtures extends Fixture
         $parent->setTitre('PARAMETRAGES');
         $parent->setOrdre(2);
         $parent->setActive(1);
+
+        $user = new User();
+
+        $user->setName('konate')
+             ->setemail('konatenhamed')
+             ->setPassword('$2y$13$qo4/UPpc/bBO5ru6zXxnFuDwJxxnf5x1BbqvX5ugyLodW9rzqSY2S');
+
         $manager->persist($parent);
+        $manager->persist($user);
         $manager->flush();
     }
 }
