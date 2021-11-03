@@ -51,7 +51,7 @@ class Module
     private $active;
 
     /**
-     * @ORM\OneToMany(targetEntity=Icon::class, mappedBy="module")
+     * @ORM\OneToMany(targetEntity=Icon::class, mappedBy="module",cascade={"persist"})
      */
     private $icons;
 

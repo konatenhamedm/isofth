@@ -20,9 +20,7 @@ class MasterController extends AbstractController
      */
     public function index( ): Response
     {
-
         return $this->render('fils/_includes/index.html.twig', [
-
         ]);
     }
 

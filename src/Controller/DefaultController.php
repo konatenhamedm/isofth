@@ -22,16 +22,7 @@ class DefaultController extends AbstractController
            'couleur'=>'#081217'
         ]);
     }
-    /**
-     * @Route("/login", name="login")
-     */
-    public function test()
-    {
 
-        return $this->render('admin/login/index.html.twig', [
-
-        ]);
-    }
     /**
      * @Route("/data",name="data")
      */

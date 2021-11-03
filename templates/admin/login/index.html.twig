@@ -9,7 +9,7 @@
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
-	<link rel="stylesheet" href="{{ asset('admin/assets/login/css/style.css') }}">
+	<link rel="stylesheet" href="{{ asset('admin/assets/login/style.css') }}">
 
 	</head>
 	<body class="img js-fullheight" style="background-image: url({{ asset('admin/assets/login/images/bg.jpg') }});">
@@ -24,12 +24,12 @@
 				<div class="col-md-6 col-lg-4">
 					<div class="login-wrap p-0">
 		      	<h3 class="mb-4 text-center">Avez vous un compte?</h3>
-		      	<form action="#" class="signin-form">
+		      	<form action="#" novalidate class="signin-form" method="POST">
 		      		<div class="form-group">
-		      			<input type="text" class="form-control" placeholder="Username" required>
+		      			<input type="email" name="email" class="form-control" placeholder="Username" value="{{ last_username }}" required>
 		      		</div>
 	            <div class="form-group">
-	              <input id="password-field" type="password" class="form-control" placeholder="Password" required>
+	              <input id="password-field" type="password" name="password" class="form-control" placeholder="Password" required>
 	              <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 	            </div>
 	            <div class="form-group">
@@ -46,7 +46,11 @@
 									<a href="#" style="color: #fff">Mot de passe oublié</a>
 								</div>
 	            </div>
+					<input type="hidden" name="_csrf_token"
+								   value="{{ csrf_token('authenticate') }}"
+							>
 	          </form>
+
 	         {# <p class="w-100 text-center">&mdash; Or Sign In With &mdash;</p>
 	          <div class="social d-flex text-center">
 	          	<a href="#" class="px-2 py-2 mr-md-1 rounded"><span class="ion-logo-facebook mr-2"></span> Facebook</a>

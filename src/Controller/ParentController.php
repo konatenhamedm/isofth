@@ -15,13 +15,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
- * @Route("/module_parent")
+ * @Route("/parent")
  * il s'agit du parent des module
  */
 class ParentController extends AbstractController
 {
     /**
-     * @Route("/{page<\d+>?1}", name="parent")
+     * @Route("/", name="parent")
      */
     public function index(ModuleParentRepository $repository,$page,PaginationService $paginationService): Response
     {
@@ -54,7 +54,7 @@ class ParentController extends AbstractController
         if($form->isSubmitted())
         {
             $response = [];
-            $redirect = $this->generateUrl('module_parent');
+            $redirect = $this->generateUrl('parent');
 
            if($form->isValid()){
                $parent->setActive(1);
@@ -101,7 +101,7 @@ class ParentController extends AbstractController
         {
 
             $response = [];
-            $redirect = $this->generateUrl('module_parent');
+            $redirect = $this->generateUrl('parent');
 
             if($form->isValid()){
                 $em->persist($parent);
@@ -201,7 +201,7 @@ class ParentController extends AbstractController
             $em->remove($parent);
             $em->flush();
 
-            $redirect = $this->generateUrl('module_parent');
+            $redirect = $this->generateUrl('parent');
 
             $message = 'Opération effectuée avec succès';
 

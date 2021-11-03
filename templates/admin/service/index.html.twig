@@ -60,47 +60,6 @@
                     {% endfor %}
                     </tbody>
                 </table>
-                {#<table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
-                    {% include 'admin/header_tableau/header.html.twig' with {'ent':tableau } %}
-                    <tbody>
-                    {% for key, data in pagination.data %}
-                    <tr>
-                        <td class="pl-0 py-6">
-                            <label class="checkbox checkbox-lg checkbox-inline">
-                                <input type="checkbox" value="1">
-                                <span></span>
-                            </label>
-                        </td>
-
-
-
-                        <td class="pl-0">
-                            <div class="symbol symbol-50 symbol-light mt-1">
-																<span class="symbol-label">
-
-																	<img src="{{ asset('uploads/article_image/' ~ data.image) }}" class="h-75 align-self-end" alt="">
-																</span>
-                            </div>
-
-                        </td>
-                        <td class="pl-0">
-                            {{ data.titre }}
-                        </td>
-
-                        <td class="active">
-                            {% if data.active==1 %}Activé{% else %}Désactivé{% endif %}
-                        </td>
-                        {% include 'admin/action/action.html.twig' with {'data':data ,'module':menu.getRoute ,'modal':modal} %}
-
-                    </tr>
-                    {% else %}
-                        <tr  role="row" class="odd" >
-                            <td style="text-align: center" colspan="5">Aucun enregistrement n'a été trouvé.
-                            </td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>#}
             </div>
             <!--end::Table-->
         </div>
@@ -110,8 +69,8 @@
    {% block java %}
        <script src="{{ asset('admin/assets/js/checkbox.js') }}"></script>
        <script src="{{ asset('admin/assets/js/active.js') }}"></script>
-       <script src="admin/assets/plugins/custom/datatables/datatables.bundle-v=7.1.2.js"></script>
-       <script src="admin/assets/js/pages/crud/datatables/basic/basic-v=7.1.2.js"></script>
+       <script src="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle-v=7.1.2.js') }}"></script>
+       <script src="{{ asset('admin/assets/js/pages/crud/datatables/basic/basic-v=7.1.2.js') }}"></script>
        <script>
 
        </script>
