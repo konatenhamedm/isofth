@@ -21,7 +21,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 class ParentController extends AbstractController
 {
     /**
-     * @Route("/", name="parent")
+     * @Route("/{page<\d+>?1}", name="parent")
      */
     public function index(ModuleParentRepository $repository,$page,PaginationService $paginationService): Response
     {
