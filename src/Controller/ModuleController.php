@@ -13,13 +13,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
+
 /**
- * @Route("/module")
+ * @Route("/admin")
  */
 class ModuleController extends AbstractController
 {
     /**
-     * @Route("/{page<\d+>?1}", name="module")
+     * @Route("/module/{page<\d+>?1}", name="module")
      */
     public function index(ModuleRepository $repository, $page, PaginationService $paginationService): Response
     {

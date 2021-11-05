@@ -14,7 +14,7 @@
             </div>
             <div class="card-toolbar">
                 <!--begin::Button-->
-                <a href="{{ path( new ~'_new') }}" class="btn btn-primary font-weight-bolder " {% if modal=="modal" %} data-toggle="modal" data-target="#exampleModalSizeLg2" {% endif %}>
+                <a href="{{ path( new ~'_new') }}" class="btn btn-primary font-weight-bolder " {% if modal!=" " %} data-toggle="modal" data-target="#exampleModalSizeLg2" {% endif %}>
                     <i class="la la-plus"></i>Nouveau</a>
 
                 <!--end::Button-->
@@ -26,7 +26,7 @@
             <!--begin::Table-->
             <div class="table-responsive mt-5">
                 <table id="datatable"
-                       class="table table-separate table-head-custom dt-responsive table-checkable dataTable dtr-inline">
+                       class="table table-separate table-head-custom table-checkable dataTable dtr-inline">
                     {% include 'admin/header_tableau/header.html.twig' with {'ent':tableau } %}
                     <tbody>
                     {% for key, data in pagination.data %}
@@ -41,10 +41,10 @@
 
 
                             <td >
-                                {{ data.titre }}
+                                {{ data.name }}
                             </td>
                             <td >
-                                {{ data.parent.titre }}
+                                {{ data.email }}
                             </td>
 
                             <td class="active">
@@ -55,7 +55,7 @@
                     {% endfor %}
                     </tbody>
                 </table>
-               {# <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
+                {# <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
                     {% include 'admin/header_tableau/header.html.twig' with {'ent':tableau } %}
                     <tbody>
                     {% for key, data in pagination.data %}

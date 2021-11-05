@@ -19,12 +19,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
- * @Route("/service")
+ * @Route("/admin")
  */
 class ServiceController extends AbstractController
 {
     /**
-     * @Route("/{page<\d+>?1}", name="service")
+     * @Route("/service/{page<\d+>?1}", name="service")
      */
     public function index(serviceRepository $repository, $page, PaginationService $paginationService): Response
     {

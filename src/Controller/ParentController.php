@@ -15,13 +15,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 /**
- * @Route("/parent")
+ * @Route("/admin")
  * il s'agit du parent des module
  */
 class ParentController extends AbstractController
 {
     /**
-     * @Route("/{page<\d+>?1}", name="parent")
+     * @Route("/parent/{page<\d+>?1}", name="parent")
      */
     public function index(ModuleParentRepository $repository,$page,PaginationService $paginationService): Response
     {

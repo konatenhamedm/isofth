@@ -1,8 +1,9 @@
 {% extends 'admin/includes/_index.html.twig' %}
 
 {% from 'admin/macros/groupe.html.twig' import groupe %}
+{% from 'admin/macros/icon.html.twig' import icon %}
 
-{% block titre %}Modification{% endblock %}
+{% block titre %}Edition{% endblock %}
 
 {% block page_content %}
     <div class="card card-custom">
@@ -11,12 +12,12 @@
 						<span class="card-icon">
 												<i class="flaticon2-layers text-primary"></i>
 											</span>
-                <h3 class="card-label">Edition du module</h3>
+                <h3 class="card-label">Editer le module</h3>
             </div>
 
         </div>
 
-      <br>
+        <br>
         <div class="card-body py-0">
             {% form_theme form 'widget/fields-block.html.twig' %}
             {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
@@ -43,7 +44,51 @@
 
                 </div>
             </div>
-            <hr>
+            <hr style="color: blue">
+            <div class="col-lg-12 icon" id="icon"  data-prototype="{{ icon(form.icons.vars.prototype)|e('html_attr') }}">
+                <div class="form-section  col-md-12">
+
+                    <h4 class=""><i class="flaticon2-layers text-primary"></i>Ajoutez une icon</h4>
+
+                </div>
+                {#      <div class="row">
+                    <div class="col-4 ">
+
+                    </div>
+                    <div class="col-8">
+                        <button type="button" class="waves-effect waves-light btn btn-primary mb-5 add_icon offset-3">
+                            <i class="fa fa-plus-circle"></i></button>
+                    </div>
+                </div>
+                <br>#}
+                <div class="row" >
+                    <div class="col-md-3">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:7%;font-weight: bolder;margin-top: 16px"></label>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:4%;font-weight: bolder;margin-top: 16px"></label>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:1%;font-weight: bolder;margin-top: 16px"></label>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:-5%;font-weight: bolder;margin-top: 16px"></label>
+                    </div>
+                    <div class="col-md-1">
+                        {#  <button type="button" class="waves-effect waves-light btn btn-primary mb-5 add_icon offset-1">
+                            <i class="fa fa-plus-circle"></i></button>#}
+
+                        <a href="#" class="btn btn-icon btn-sm btn-primary add_icon offset-2" data-card-tool="remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove Card"><i class="fa fa-plus-circle icon-nm"></i> </a>
+                    </div>
+
+                </div><br>
+                {% for row in form.icons %}
+                    <div class="container col-md-12" >
+                        {{ icon(row|e) }}
+                    </div>
+                {% endfor %}
+                <span class="after"></span>
+            </div>   <hr style="color: blue">
             <div class="col-lg-12 intervention" id="intervention"  data-prototype="{{ groupe(form.groupes.vars.prototype)|e('html_attr') }}">
                 <div class="form-section  col-md-12">
 
@@ -72,8 +117,9 @@
                         <label class="sr-onl cacher" for="userinput1" style="margin-left:-5%;font-weight: bolder;margin-top: 16px">ORDRE</label>
                     </div>
                     <div class="col-md-1">
-                        <button type="button" class="waves-effect waves-light btn btn-primary  add_intervention" style="margin-left: -38px">
-                            <i class="fa fa-plus-circle"></i></button>
+                        {#  <button type="button" class="waves-effect waves-light btn btn-primary  add_intervention" >
+                            <i class="fa fa-plus-circle"></i></button>#}
+                        <a href="#" class="btn btn-icon btn-sm btn-primary add_intervention " style="margin-left: -38px" data-card-tool="remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove Card"><i class="fa fa-plus-circle icon-nm"></i> </a>
                     </div>
 
                 </div><br>
@@ -83,8 +129,12 @@
                     </div>
                 {% endfor %}
                 <span class="after"></span>
-            </div><div class="card-footer">
-                <button type="submit" class="btn btn-primary mr-2">Editer</button>
+            </div>
+
+
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary mr-2">Valider</button>
                 <a  class="btn btn-secondary" href="{{ path('module') }}">Annuler</a>
             </div>
             {{ form_end(form) }}
@@ -96,10 +146,17 @@
    {% block java %}
        <script src="{{ asset('admin/assets/js/checkbox.js') }}"></script>
        <script src="{{ asset('admin/assets/js/active.js') }}"></script>
-       <script src="admin/assets/plugins/custom/datatables/datatables.bundle-v=7.1.2.js"></script>
-       <script src="admin/assets/js/pages/crud/datatables/basic/basic-v=7.1.2.js"></script>
+       <script src="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle-v=7.1.2.js') }}"></script>
+       <script src="{{ asset('admin/assets/js/pages/crud/datatables/basic/basic-v=7.1.2.js') }}"></script>
        <script src="{{ asset('admin/assets/js/groupe.js') }}"></script>
+       <script src="{{ asset('admin/assets/js/icon.js') }}"></script>
+       <script src="https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/js/pages/features/cards/tools.js?v=7.1.2"></script>
        <script>
+           $(document).ready(function () {
+               $('.add_icon').click(function () {
+                   $('select').select2();
+               });
+           })
            $('select').select2();
        </script>
    {% endblock %}

@@ -15,13 +15,14 @@ use Symfony\Component\Routing\Annotation\Route;
 use Gedmo\Sluggable\Util\Urlizer;
 use Symfony\Component\Serializer\SerializerInterface;
 
+
 /**
- * @Route("/parametre")
+ * @Route("/admin")
  */
 class ParametreController extends AbstractController
 {
     /**
-     * @Route("/{page<\d+>?1}", name="parametre")
+     * @Route("/parametre/{page<\d+>?1}", name="parametre")
      */
     public function index(ParametreRepository $repository,$page,PaginationService $paginationService): Response
     {

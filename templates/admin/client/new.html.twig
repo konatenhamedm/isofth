@@ -1,0 +1,111 @@
+{% extends 'admin/includes/_index.html.twig' %}
+
+{% from 'admin/macros/abonnement.html.twig' import abonnement %}
+
+{% block titre %}Ajout{% endblock %}
+
+{% block page_content %}
+    <div class="card card-custom">
+        <div class="card-header">
+            <div class="card-title">
+						<span class="card-abonnement">
+												<i class="flatabonnement2-layers text-primary"></i>
+											</span>
+                <h3 class="card-label">Ajouter un module</h3>
+            </div>
+
+        </div>
+
+        <br>
+        <div class="card-body py-0">
+            {% form_theme form 'widget/fields-block.html.twig' %}
+            {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+
+            <div class="row">
+                <div class="form-group col-md-4 mb-2">
+                    <label class="sr-onl" for="userinput1">Nom</label>
+                    {{ form_widget(form.nom,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Nom','required':'required'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 mb-2">
+                    <label class="sr-onl" for="userinput1">Contact</label>
+                    {{ form_widget(form.contact,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Contact'}}) }}
+                    {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+                </div>
+                <div class="form-group col-md-4 mb-2">
+                    <label class="sr-onl" for="userinput2">Email</label>
+                    {{ form_widget(form.email,{'attr':{'class':'form-control border-primary','id':'userinput2','placeholder':'Email','required':'required'}}) }}
+                </div>
+            </div>
+            <hr style="color: blue">
+            <div class="col-lg-12 icon" id="icon"  data-prototype="{{ abonnement(form.abonnements.vars.prototype)|e('html_attr') }}">
+                <div class="form-section  col-md-12">
+
+                    <h4 class=""><i class="flatabonnement2-layers text-primary"></i>Ajoutez un abonnement</h4>
+
+                </div>
+                {#      <div class="row">
+                    <div class="col-4 ">
+
+                    </div>
+                    <div class="col-8">
+                        <button type="button" class="waves-effect waves-light btn btn-primary mb-5 add_abonnement offset-3">
+                            <i class="fa fa-plus-circle"></i></button>
+                    </div>
+                </div>
+                <br>#}
+                <div class="row" >
+                    <div class="col-md-3">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:7%;font-weight: bolder;margin-top: 16px"></label>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:4%;font-weight: bolder;margin-top: 16px"></label>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:1%;font-weight: bolder;margin-top: 16px"></label>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="sr-onl cacher" for="userinput1" style="margin-left:-5%;font-weight: bolder;margin-top: 16px"></label>
+                    </div>
+                    <div class="col-md-1">
+                        {#  <button type="button" class="waves-effect waves-light btn btn-primary mb-5 add_abonnement offset-1">
+                            <i class="fa fa-plus-circle"></i></button>#}
+
+                        <a href="#" class="btn btn-icon btn-sm btn-primary add_icon offset-2" data-card-tool="remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Add Card"><i class="fa fa-plus-circle icon-nm"></i> </a>
+                    </div>
+
+                </div><br>
+                {% for row in form.abonnements %}
+                    <div class="container col-md-12" >
+                        {{ abonnement(row|e) }}
+                    </div>
+                {% endfor %}
+                <span class="after"></span>
+            </div>
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary mr-2">Valider</button>
+                <a  class="btn btn-secondary" href="{{ path('module') }}">Annuler</a>
+            </div>
+            {{ form_end(form) }}
+
+        </div>
+
+    </div>
+{% endblock %}
+   {% block java %}
+       <script src="{{ asset('admin/assets/js/checkbox.js') }}"></script>
+       <script src="{{ asset('admin/assets/js/active.js') }}"></script>
+       <script src="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle-v=7.1.2.js') }}"></script>
+       <script src="{{ asset('admin/assets/js/pages/crud/datatables/basic/basic-v=7.1.2.js') }}"></script>
+       <script src="{{ asset('admin/assets/js/icon.js') }}"></script>
+       <script src="https://preview.keenthemes.com/metronic/theme/html/demo1/dist/assets/js/pages/features/cards/tools.js?v=7.1.2"></script>
+       <script>
+           $(document).ready(function () {
+               $('.add_icon').click(function () {
+                   $('select').select2();
+               });
+           })
+           $('select').select2();
+       </script>
+   {% endblock %}
