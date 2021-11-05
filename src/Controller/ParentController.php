@@ -38,7 +38,7 @@ class ParentController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="parent_new", methods={"GET","POST"})
+     * @Route("/parent/new", name="parent_new", methods={"GET","POST"})
      */
     public function new(Request $request, EntityManagerInterface  $em): Response
     {
@@ -82,7 +82,7 @@ class ParentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="parent_edit", methods={"GET","POST"})
+     * @Route("/parent/{id}/edit", name="parent_edit", methods={"GET","POST"})
      */
     public function edit(Request $request,ModuleParent $parent, EntityManagerInterface  $em): Response
     {
@@ -129,7 +129,7 @@ class ParentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/show", name="parent_show", methods={"GET"})
+     * @Route("/parent/{id}/show", name="parent_show", methods={"GET"})
      */
     public function show(ModuleParent $parent): Response
     {
@@ -147,7 +147,7 @@ class ParentController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/active", name="parent_active", methods={"GET"})
+     * @Route("/parent/{id}/active", name="parent_active", methods={"GET"})
      */
     public function active($id,ModuleParent $parent, SerializerInterface $serializer): Response
     {
@@ -177,7 +177,7 @@ class ParentController extends AbstractController
 
 
     /**
-     * @Route("/delete/{id}", name="parent_delete", methods={"POST","GET","DELETE"})
+     * @Route("/parent/delete/{id}", name="parent_delete", methods={"POST","GET","DELETE"})
      */
     public function delete(Request $request, EntityManagerInterface $em,ModuleParent $parent): Response
     {

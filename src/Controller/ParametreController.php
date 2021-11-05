@@ -39,7 +39,7 @@ class ParametreController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="parametre_new", methods={"GET","POST"})
+     * @Route("/parametre/new", name="parametre_new", methods={"GET","POST"})
      */
     public function new(Request $request, EntityManagerInterface  $em,UploaderHelper  $uploaderHelper): Response
     {
@@ -91,7 +91,7 @@ class ParametreController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="parametre_edit", methods={"GET","POST"})
+     * @Route("/parametre/{id}/edit", name="parametre_edit", methods={"GET","POST"})
      */
     public function edit(Request $request,Parametre $parametre, EntityManagerInterface  $em,UploaderHelper  $uploaderHelper): Response
     {
@@ -147,7 +147,7 @@ class ParametreController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/show", name="parametre_show", methods={"GET"})
+     * @Route("/parametre/{id}/show", name="parametre_show", methods={"GET"})
      */
     public function show(Parametre $parametre): Response
     {
@@ -165,7 +165,7 @@ class ParametreController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/active", name="parametre_active", methods={"GET"})
+     * @Route("/parametre/{id}/active", name="parametre_active", methods={"GET"})
      */
     public function active($id,Parametre $parametre, SerializerInterface $serializer): Response
     {
@@ -195,7 +195,7 @@ class ParametreController extends AbstractController
 
 
     /**
-     * @Route("/delete/{id}", name="parametre_delete", methods={"POST","GET","DELETE"})
+     * @Route("/parametre/delete/{id}", name="parametre_delete", methods={"POST","GET","DELETE"})
      */
     public function delete(Request $request, EntityManagerInterface $em,Parametre $parametre): Response
     {

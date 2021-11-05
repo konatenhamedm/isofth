@@ -41,7 +41,7 @@ class ServiceController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="service_new", methods={"GET","POST"})
+     * @Route("/service/new", name="service_new", methods={"GET","POST"})
      */
     public function new(Request $request, EntityManagerInterface  $em,UploaderHelper  $uploaderHelper): Response
     {
@@ -103,7 +103,7 @@ class ServiceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="service_edit", methods={"GET","POST"})
+     * @Route("/service/{id}/edit", name="service_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Service $service, EntityManagerInterface  $em,UploaderHelper  $uploaderHelper): Response
     {
@@ -167,7 +167,7 @@ class ServiceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/show", name="service_show", methods={"GET"})
+     * @Route("/service/{id}/show", name="service_show", methods={"GET"})
      */
     public function show(Service $service): Response
     {
@@ -185,7 +185,7 @@ class ServiceController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/active", name="service_active", methods={"GET"})
+     * @Route("/service/{id}/active", name="service_active", methods={"GET"})
      */
     public function active($id, Service $service, SerializerInterface $serializer): Response
     {
@@ -211,7 +211,7 @@ class ServiceController extends AbstractController
 
 
     /**
-     * @Route("/delete/{id}", name="service_delete", methods={"POST","GET","DELETE"})
+     * @Route("/service/delete/{id}", name="service_delete", methods={"POST","GET","DELETE"})
      */
     public function delete(Request $request, EntityManagerInterface $em, Service $service): Response
     {
