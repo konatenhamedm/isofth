@@ -26,7 +26,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 class LoginController extends AbstractController
 {
     /**
-     * @Route("/login/admin", name="default")
+     * @Route("/utilisateur/admin", name="default")
      */
     public function admin(Services $services,ModuleRepository $repository): Response
     {
@@ -37,7 +37,7 @@ class LoginController extends AbstractController
     }
 
     /**
-     * @Route("/login/{page<\d+>?1}", name="utilisateur")
+     * @Route("/utilisateur/{page<\d+>?1}", name="utilisateur")
      */
     public function index(UserRepository $repository, $page, PaginationService $paginationService): Response
     {
@@ -54,7 +54,7 @@ class LoginController extends AbstractController
     }
 
     /**
-     * @Route("/login/new", name="utilisateur_new", methods={"GET","POST"})
+     * @Route("/utilisateur/new", name="utilisateur_new", methods={"GET","POST"})
      */
     public function new(Request $request, EntityManagerInterface  $em, MailerService  $mailerService,UploaderHelper  $uploaderHelper,UserPasswordHasherInterface $userPasswordHasher): Response
     {
@@ -112,7 +112,7 @@ class LoginController extends AbstractController
     }
 
     /**
-     * @Route("/login/{id}/edit", name="utilisateur_edit", methods={"GET","POST"})
+     * @Route("/utilisateur/{id}/edit", name="utilisateur_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, User $utilisateur, EntityManagerInterface  $em,UploaderHelper  $uploaderHelper): Response
     {
@@ -157,7 +157,7 @@ class LoginController extends AbstractController
     }
 
     /**
-     * @Route("/login/{id}/show", name="utilisateur_show", methods={"GET"})
+     * @Route("/utilisateur/{id}/show", name="utilisateur_show", methods={"GET"})
      */
     public function show(Service $utilisateur): Response
     {
@@ -175,7 +175,7 @@ class LoginController extends AbstractController
     }
 
     /**
-     * @Route("/login/{id}/active", name="utilisateur_active", methods={"GET"})
+     * @Route("/utilisateur/{id}/active", name="utilisateur_active", methods={"GET"})
      */
     public function active($id, User $utilisateur, SerializerInterface $serializer): Response
     {
@@ -201,7 +201,7 @@ class LoginController extends AbstractController
 
 
     /**
-     * @Route("/login/delete/{id}", name="utilisateur_delete", methods={"POST","GET","DELETE"})
+     * @Route("/utilisateur/delete/{id}", name="utilisateur_delete", methods={"POST","GET","DELETE"})
      */
     public function delete(Request $request, EntityManagerInterface $em, User $utilisateur): Response
     {
