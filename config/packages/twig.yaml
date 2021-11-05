@@ -4,7 +4,7 @@ twig:
         menu: '@App\Admin\Services'
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
-    fos_ck_editor:
+fos_ck_editor:
         configs:
             main_config:
                 toolbar:
