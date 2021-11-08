@@ -31,7 +31,7 @@ class ParametreController extends AbstractController
 
         return $this->render('admin/parametre/index.html.twig', [
             'pagination'=>$paginationService,
-            'tableau'=>['Logo','Titre'],
+            'tableau' => ['logo'=> 'logo','titre'=> 'titre'],
             'modal' => 'modal',
             'titre' => 'Liste des parametres',
 
