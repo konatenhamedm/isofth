@@ -104,7 +104,10 @@
            $(document).ready(function () {
                $('.add_icon').click(function () {
                    $('select').select2();
+                   $collectionHolder = $('#icon');
+                   $collectionHolder.find('#client').hide();
                });
+               $('#client').hide();
            })
            $('select').select2();
        </script>

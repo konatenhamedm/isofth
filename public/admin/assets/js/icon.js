@@ -38,7 +38,6 @@ $(document).ready(function() {
 
             $(e.target).parents('.container').slideUp(1000, function () {
                 $(this).remove();
-
             });
 
         })

@@ -13,7 +13,6 @@
                 <a href="tools.html#" class="btn btn-abonnement btn-sm btn-success mr-1" data-card-tool="reload" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reload Card">
                     <i class="ki ki-reload abonnement-nm"></i>
                 </a>#}
-
                 {# <a href="tools.html#" class="btn btn-abonnement btn-sm btn-warning supprimer" data-card-tool="remove" data-toggle="tooltip" data-placement="top" title="" data-original-title="Remove Card">
                     <i class="ki ki-close abonnement-nm"></i>
                 </a>#}
@@ -41,6 +40,10 @@
                 <div class="form-group col-md-6 ">
 
                     {{ form_row(abonnement.dateFin,{'attr':{'class':'form-control ','id':'userinput16','placeholder':'Lien','required':'required'}}) }}
+                </div>
+                <div id="client">
+
+                    {{ form_row(abonnement.client,{'attr':{'class':'form-control ','id':'userinput16','placeholder':'Client','required':'required'}}) }}
                 </div>
 
             </div>

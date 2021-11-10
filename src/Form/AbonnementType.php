@@ -3,6 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Abonnement;
+use App\Entity\Client;
+use App\Entity\ModuleParent;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -36,7 +40,7 @@ class AbonnementType extends AbstractType
                     'expanded'     => false,
                     'placeholder' => 'Choisir un etat',
                     'required'     => true,
-                    'attr' => ['class' => 'select2_multiple'],
+                   // 'attr' => ['class' => 'select2_multiple'],
                     'multiple' => false,
                     //'choices_as_values' => true,
 
@@ -54,7 +58,15 @@ class AbonnementType extends AbstractType
                 "empty_data" => '',
                 'label'=>"Date renouvellement",
             ])
-           /* ->add('client')*/
+           ->add('client',EntityType::class,[
+               'class' => Client::class,
+               'query_builder' => function (EntityRepository $er) {
+                   return $er->createQueryBuilder('u')
+                       ->orderBy('u.id', 'DESC');
+               },
+               'choice_label' => 'nom',
+
+           ])
         ;
     }
 
