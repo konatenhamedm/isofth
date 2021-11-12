@@ -18,7 +18,14 @@ class ParametreRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Parametre::class);
     }
-
+    public function findParametre()
+    {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
     // /**
     //  * @return Parametre[] Returns an array of Parametre objects
     //  */

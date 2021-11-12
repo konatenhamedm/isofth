@@ -3,6 +3,7 @@
 namespace App\Admin;
 
 use App\Entity\Groupe;
+use App\Entity\Parametre;
 use App\Entity\Service;
 use App\Entity\Icon;
 use Doctrine\ORM\EntityManagerInterface;
@@ -40,6 +41,11 @@ class Services
     public function listeServices()
     {
         $repo = $this->em->getRepository(Service::class)->findService();
+        return $repo;
+    }
+    public function findParametre()
+    {
+        $repo = $this->em->getRepository(Parametre::class)->findParametre();
         return $repo;
     }
 
