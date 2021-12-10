@@ -1,0 +1,62 @@
+{% block page_content %}
+    {% form_theme form 'widget/fields-block.html.twig' %}
+    <div class="modal-header">
+        <h5 class="modal-title" id="myLargeModalLabel">Création d'un abonnement</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    </div>
+    {{ form_start(form, {'attr': {'role':'form', 'class': 'form'}}) }}
+    <div class="modal-body ">
+        {# {{ include('includes/ajax/response.html.twig') }} #}
+        <div class="row">
+            <div class="form-group col-md-6 mb-2">
+                <label class="sr-onl" for="userinput1">Client</label>
+                {{ form_widget(form.client,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Client','required':'required'}}) }}
+                {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label class="sr-onl" for="userinput1">Libelle</label>
+                {{ form_widget(form.libelle,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Libelle'}}) }}
+                {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="form-group col-md-6 mb-2">
+                <label class="sr-onl" for="userinput1">Date debut</label>
+                {{ form_widget(form.dateDebut,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Date debut','required':'required'}}) }}
+                {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label class="sr-onl" for="userinput1">Date fin</label>
+                {{ form_widget(form.dateFin,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Date fin'}}) }}
+                {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+            </div>
+        </div>
+        <div class="row" id="cacher">
+            <div class="form-group col-md-6 mb-2">
+                <label class="sr-onl" for="userinput1">Etat</label>
+                {{ form_widget(form.etat,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Etat','required':'required'}}) }}
+                {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+            </div>
+            <div class="form-group col-md-6 mb-2">
+                <label class="sr-onl" for="userinput1">Date fin</label>
+                {{ form_widget(form.dateRenouvellement,{'attr':{'class':'form-control border-primary','id':'userinput1','placeholder':'Date renouvellement'}}) }}
+                {# <input type="text" id="userinput1" class="form-control border-primary" placeholder="Compte contribuable" name="name">#}
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-danger text-left" data-dismiss="modal">Annuler</button>
+        <button type="submit" class="btn btn-primary ">Valider</button>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+ {% block java %}
+     <script>
+         $(document).ready(function () {
+                 $('select').select2();
+                 $('#cacher').hide();
+         })
+
+     </script>
+ {% endblock %}

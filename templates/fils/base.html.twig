@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zxx">
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Softly{% endblock %}</title>
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="{{ asset("fils/assets/css/bootstrap.min.css") }}">
+
+        <link rel="stylesheet" href="{{ asset("fils/assets/css/animate.min.css") }}">
+
+        <link rel="stylesheet" href="{{ asset("fils/assets/fonts/flaticon.css") }}">
+
+        <link rel="stylesheet" href="{{ asset("fils/assets/css/boxicons.min.css") }}">
+
+        <link rel="stylesheet" href="{{ asset("fils/assets/css/owl.carousel.min.css") }}">
+        <link rel="stylesheet" href="{{ asset("fils/assets/css/owl.theme.default.min.css") }}">
+
+        <link rel="stylesheet" href="{{ asset("fils/assets/css/magnific-popup.css") }}">
+
+        <link rel="stylesheet" href="{{ asset("fils/assets/css/nice-select.min.css") }}">
+
+        <link rel="stylesheet" href="{{ asset("fils/assets/css/meanmenu.css") }}">
+
+        <link rel="stylesheet" href="{{ asset("fils/assets/css/style.css") }}">
+
+        <link rel="stylesheet" href="{{ asset("fils/assets/css/responsive.css") }}">
+
+        <link rel="icon" type="image/png" href="{{ asset("assets/images/favicon.png") }}">
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+
+        {% endblock %}
+      {#  <SCRIPT LANGUAGE="JavaScript">
+
+            function disableselect(e){
+                return false
+            }
+
+            function reEnable(){
+                return true
+            }
+
+            //if IE4+
+            document.onselectstart=new Function ("return false")
+            document.oncontextmenu=new Function ("return false")
+            //if NS6
+            if (window.sidebar){
+                document.onmousedown=disableselect
+                document.onclick=reEnable
+            }
+            //-->
+        </script>#}
+    </head>
+    <body>
+        {% block body %}
+
+        {% endblock %}
+
+        <script src="{{ asset("fils/assets/js/jquery.min.js") }}"></script>
+
+        <script src="{{ asset("fils/assets/js/bootstrap.bundle.min.js") }}"></script>
+
+        <script src="{{ asset("fils/assets/js/owl.carousel.min.js") }}"></script>
+
+        <script src="{{ asset("fils/assets/js/jquery.magnific-popup.min.js") }}"></script>
+
+        <script src="{{ asset("fils/assets/js/jquery.nice-select.min.js") }}"></script>
+
+        <script src="{{ asset("fils/assets/js/wow.min.js") }}"></script>
+
+        <script src="{{ asset("fils/assets/js/meanmenu.js") }}"></script>
+
+        <script src="{{ asset("fils/assets/js/jquery.ajaxchimp.min.js") }}"></script>
+
+        <script src="{{ asset("fils/assets/js/form-validator.min.js") }}"></script>
+
+        <script src="{{ asset("fils/assets/js/contact-form-script.js") }}"></script>
+
+        <script src="{{ asset("fils/assets/js/custom.js") }}"></script>
+      {#  <script >
+            /*$(document).ready(function() {
+                $("#navbarSupportedContent a").click(function() {
+
+                });
+            });*/
+            function onClickBtnActive(event){
+                event.preventDefault();
+                const icon= this.querySelector('i');
+                const  class_=this;
+
+                class_.classList.replace('nav-link','nav-link active');
+            }
+            document.querySelectorAll('#navbarSupportedContent a').forEach(function (link) {
+                /*console.log(link.classList.value);*/
+                link.addEventListener('click',onClickBtnActive);
+            });
+        </script>#}
+    </body>
+</html>

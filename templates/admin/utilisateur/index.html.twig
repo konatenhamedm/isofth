@@ -1,0 +1,108 @@
+{% extends 'admin/includes/_index.html.twig' %}
+
+{% block titre %}{{ menu.getRoute }}{% endblock %}
+
+{% block page_content %}
+    {% set new=menu.getRoute %}
+    <div class="card card-custom">
+        <div class="card-header">
+            <div class="card-title">
+						<span class="card-icon">
+												<i class="flaticon2-layers text-primary"></i>
+											</span>
+                <h3 class="card-label">{{ titre }}</h3>
+            </div>
+            <div class="card-toolbar">
+                <!--begin::Button-->
+                <a href="{{ path( new ~'_new') }}" class="btn btn-primary font-weight-bolder " {% if modal!=" " %} data-toggle="modal" data-target="#exampleModalSizeLg2" {% endif %}>
+                    <i class="la la-plus"></i>Nouveau</a>
+
+                <!--end::Button-->
+            </div>
+        </div>
+
+
+        <div class="card-body py-0">
+            <!--begin::Table-->
+            <div class="table-responsive mt-5">
+                <table id="datatable"
+                       class="table table-separate table-head-custom table-checkable dataTable dtr-inline">
+                    {% include 'admin/header_tableau/header.html.twig' with {'ent':tableau } %}
+                    <tbody>
+                    {% for key, data in pagination.data %}
+                        <tr>
+                            <td >
+                                <label class="checkbox checkbox-lg checkbox-inline">
+                                    <input type="checkbox" value="1">
+                                    <span></span>
+                                </label>
+                            </td>
+
+
+
+                            <td >
+                                {{ data.name }}
+                            </td>
+                            <td >
+                                {{ data.email }}
+                            </td>
+
+                            <td class="active">
+                                {% if data.active==1 %}Activé{% else %}Désactivé{% endif %}
+                            </td>
+                            {% include 'admin/action/action.html.twig' with {'data':data ,'module':menu.getRoute ,'modal':modal} %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {# <table class="table table-head-custom table-vertical-center" id="kt_advance_table_widget_4">
+                    {% include 'admin/header_tableau/header.html.twig' with {'ent':tableau } %}
+                    <tbody>
+                    {% for key, data in pagination.data %}
+                    <tr>
+                        <td class="pl-0 py-6">
+                            <label class="checkbox checkbox-lg checkbox-inline">
+                                <input type="checkbox" value="1">
+                                <span></span>
+                            </label>
+                        </td>
+
+
+
+                        <td class="pl-0">
+                            {{ data.titre }}
+                        </td>
+                        <td class="pl-0">
+                            {{ data.parent.titre }}
+                        </td>
+
+                        <td class="active">
+                            {% if data.active==1 %}Activé{% else %}Désactivé{% endif %}
+                        </td>
+                        {% include 'admin/action/action.html.twig' with {'data':data ,'module':menu.getRoute ,'modal':modal} %}
+
+                    </tr>
+                    {% else %}
+                        <tr  role="row" class="odd" >
+                            <td style="text-align: center" colspan="5">Aucun enregistrement n'a été trouvé.
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+                {% include 'admin/pagination/pagination.html.twig' with {'route':menu.getRoute } %}#}
+            </div>
+            <!--end::Table-->
+        </div>
+
+    </div>
+{% endblock %}
+   {% block java %}
+       <script src="{{ asset('admin/assets/js/checkbox.js') }}"></script>
+       <script src="{{ asset('admin/assets/js/active.js') }}"></script>
+       <script src="{{ asset('admin/assets/plugins/custom/datatables/datatables.bundle-v=7.1.2.js') }}"></script>
+       <script src="{{ asset('admin/assets/js/pages/crud/datatables/basic/basic-v=7.1.2.js') }}"></script>
+       <script>
+
+       </script>
+   {% endblock %}

@@ -1,0 +1,252 @@
+<?php
+
+namespace App\Controller;
+
+use App\Admin\PaginationService;
+use App\Entity\Module;
+use App\Form\ModuleType;
+use App\Repository\GroupeRepository;
+use App\Repository\ModuleRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+
+
+/**
+ * @Route("/admin")
+ */
+class ModuleController extends AbstractController
+{
+    /**
+     * @Route("/module/{page<\d+>?1}", name="module")
+     */
+    public function index(ModuleRepository $repository, $page,PaginationService $paginationService): Response
+    {
+        $module = new Module();
+        $paginationService->setEntityClass(Module::class)
+            ->setPage($page);
+/*dd($module->getProperties());*/
+        return $this->render('admin/module/index.html.twig', [
+            'pagination' => $paginationService,
+            'tableau' => $module->getProperties(),
+            'modal' => ' ',
+            'titre' => 'Liste des modules',
+
+        ]);
+    }
+
+    /**
+     * @Route("/module/new", name="module_new", methods={"GET","POST"})
+     */
+    public function new(Request $request, EntityManagerInterface  $em): Response
+    {
+        $module = new Module();
+        $form = $this->createForm(ModuleType::class, $module, [
+            'method' => 'POST',
+            'action' => $this->generateUrl('module_new')
+        ]);
+        $form->handleRequest($request);
+
+        $isAjax = $request->isXmlHttpRequest();
+
+        if ($form->isSubmitted()) {
+            $response = [];
+            $redirect = $this->generateUrl('module');
+
+            if ($form->isValid()) {
+
+                $module->setActive(1);
+                $em->persist($module);
+                $em->flush();
+
+                $message       = 'Opération effectuée avec succès';
+                $statut = 1;
+                $this->addFlash('success', $message);
+            }
+            if ($isAjax) {
+                return $this->json(compact('statut', 'message', 'redirect'));
+            } else {
+                if ($statut == 1) {
+                    return $this->redirect($redirect);
+                }
+            }
+        }
+
+        return $this->render('admin/module/new.html.twig', [
+            'module' => $module,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/module/{id}/edit", name="module_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Module $module, EntityManagerInterface  $em): Response
+    {
+
+        $form = $this->createForm(ModuleType::class, $module, [
+            'method' => 'POST',
+            'action' => $this->generateUrl('module_edit', [
+                'id' => $module->getId(),
+            ])
+        ]);
+        $form->handleRequest($request);
+
+        $isAjax = $request->isXmlHttpRequest();
+
+        if ($form->isSubmitted()) {
+            $response = [];
+            $redirect = $this->generateUrl('module');
+
+            if ($form->isValid()) {
+                $em->persist($module);
+                $em->flush();
+
+                $message       = 'Opération effectuée avec succès';
+                $statut = 1;
+                $this->addFlash('success', $message);
+            }
+
+            if ($isAjax) {
+                return $this->json(compact('statut', 'message', 'redirect'));
+            } else {
+                if ($statut == 1) {
+                    return $this->redirect($redirect);
+                }
+            }
+        }
+
+        return $this->render('admin/module/edit.html.twig', [
+            'module' => $module,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/module/{id}/show", name="module_show", methods={"GET"})
+     */
+    public function show(Module $module): Response
+    {
+        $form = $this->createForm(ModuleType::class, $module, [
+            'method' => 'POST',
+            'action' => $this->generateUrl('module_edit', [
+                'id' => $module->getId(),
+            ])
+        ]);
+
+        return $this->render('admin/module/voir.html.twig', [
+            'module' => $module,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/module/{id}/active", name="module_active", methods={"GET"})
+     */
+    public function active($id, Module $module, SerializerInterface $serializer): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+
+        if ($module->getActive() == 1) {
+
+            $module->setActive(0);
+        } else {
+
+            $module->setActive(1);
+        }
+        $json = $serializer->serialize($module, 'json', ['groups' => ['normal']]);
+        $entityManager->persist($module);
+        $entityManager->flush();
+        return $this->json([
+            'code' => 200,
+            'message' => 'ça marche bien',
+            'active' => $module->getActive(),
+        ], 200);
+    }
+
+    /**
+     * @Route("/module/liste", name="module_lis", methods={"GET"})
+     */
+    public function activel(GroupeRepository $repo, SerializerInterface $serializer): Response
+    {
+        // On récupère la liste des MODULE
+        $groupe = $repo->afficheModule();
+
+        if ($groupe) {
+
+            $tabEnsembles = array();
+            $i = 0;
+
+            foreach($groupe as $e) { // transformer la réponse de la requete en tableau qui remplira le select pour ensembles
+                //dd($e['id']);
+                $tabEnsembles[$i]['groupe'] = $e['groupe'];
+                $tabEnsembles[$i]['module'] = $e['module'];
+                $i++;
+            }
+
+            $response = new Response();
+            $data = json_encode($tabEnsembles); // formater le résultat de la requête en json
+            dd( $data);
+            $response->headers->set('Content-Type', 'application/json');
+            $response->setContent($data);
+
+
+            return $response;
+        }
+    }
+
+
+    /**
+     * @Route("/module/delete/{id}", name="module_delete", methods={"POST","GET","DELETE"})
+     */
+    public function delete(Request $request, EntityManagerInterface $em, Module $module): Response
+    {
+        $form = $this->createFormBuilder()
+            ->setAction(
+                $this->generateUrl(
+                    'module_delete',
+                    [
+                        'id' => $module->getId()
+                    ]
+                )
+            )
+            ->setMethod('DELETE')
+            ->getForm();
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em->remove($module);
+            $em->flush();
+
+            $redirect = $this->generateUrl('module');
+
+            $message = 'Opération effectuée avec succès';
+
+            $response = [
+                'statut'   => 1,
+                'message'  => $message,
+                'redirect' => $redirect,
+            ];
+
+            $this->addFlash('success', $message);
+
+            if (!$request->isXmlHttpRequest()) {
+                return $this->redirect($redirect);
+            } else {
+                return $this->json($response);
+            }
+        }
+        return $this->render('admin/module/delete.html.twig', [
+            'module' => $module,
+            'form' => $form->createView(),
+        ]);
+    }
+}

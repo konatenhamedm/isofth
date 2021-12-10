@@ -1,0 +1,42 @@
+{#<div class="dataTables_paginate paging_simple_numbers" id="example_paginate">
+    {% set page=pagination.page %}
+    {% set pages=pagination.pages %}
+    <ul class="pagination">
+        <li class="paginate_button page-item previous {% if page==1 %}disabled{% endif %}" id="example_previous">
+            <a href="{{ path(route,{'page':page-1}) }}" aria-controls="example" data-dt-idx="0" tabindex="0" class="page-link">Previous</a>
+        </li>
+        {% for i in 1..pages %}
+            <li class="paginate_button page-item {% if page==i %}active{% endif %}">
+                <a href="{{ path(route,{'page':i}) }}" aria-controls="example" data-dt-idx="1" tabindex="0" class="page-link">{{ i }}</a>
+            </li>
+        {% endfor %}
+        <li class="paginate_button page-item next {% if page==pages %}disabled{% endif %}" id="example_next">
+            <a href="{{ path(route,{'page':page+1}) }}" aria-controls="example" data-dt-idx="7" tabindex="0" class="page-link">Next</a>
+        </li>
+    </ul>
+</div>#}
+
+<div class="dataTables_paginate paging_simple_numbers" id="kt_datatable_2_paginate">
+    {% set page=pagination.page %}
+    {% set pages=pagination.pages %}
+    <ul class="pagination">
+
+        <li class="paginate_button page-item previous {% if page==1 %}disabled{% endif %}" id="kt_datatable_2_previous">
+            <a
+                    href="{{ path(route,{'page':page-1}) }}" aria-controls="kt_datatable_2" data-dt-idx="0" tabindex="0"
+                    class="page-link"><i class="ki ki-arrow-back"></i></a>
+        </li>
+        {% for i in 1..pages %}
+        <li class="paginate_button page-item {% if page==i %}active{% endif %}"><a href="{{ path(route,{'page':page+1}) }}" aria-controls="kt_datatable_2"
+                                                        data-dt-idx="1" tabindex="0"
+                                                        class="page-link">{{ i }}</a></li>
+        {% endfor %}
+
+        <li class="paginate_button page-item next {% if page==pages %}disabled{% endif %}" id="kt_datatable_2_next"><a href="{{ path(route,{'page':page+1}) }}"
+                                                                               aria-controls="kt_datatable_2"
+                                                                               data-dt-idx="6"
+                                                                               tabindex="0"
+                                                                               class="page-link"><i
+                        class="ki ki-arrow-next"></i></a></li>
+    </ul>
+</div>

@@ -1,0 +1,31 @@
+<section class="services-area pt-100 pb-70" id="service">
+    <div class="container">
+        <div class="section-title text-center">
+           <h1> <span class="sp-color1">Nos services</span></h1>
+            <h4 style="color: white">Nous fournissons une grande variété de services informatiques</h4>
+            <p class="margin-auto">
+                Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris Morbi accumsan ipsum velit.
+            </p>
+        </div>
+        <div class="row pt-45">
+            {% if menu.listeServices()|length > 0 %}
+            {% for service in menu.listeServices()  %}
+                <div class="col-lg-3 col-sm-6">
+                    <div class="services-card">
+                        <i class="{{ service.icon }}"></i>
+                        <h3><a href="{{ path('service_detail',{'id':service.id}) }}">{{ service.titre }}</a></h3>
+                        <p>{{ service.extrait }}</p>
+                        <a href="{{ path('service_detail',{'id':service.id}) }}" class="learn-btn">Lire plus <i class="bx bx-chevron-right"></i></a>
+                    </div>
+                </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+    </div>
+    <div class="service-shape">
+        <img src="fils/assets/images/shape/service-shape1.png" alt="Images">
+    </div>
+</section>
+
+
