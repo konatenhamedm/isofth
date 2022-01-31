@@ -31,42 +31,14 @@ Passionné par les nouvelles technologies , Nous mettons nos compétences au ser
                                     IT Consultancy
                                 </a>
                             </li>#}
-                            <li>
-                                <a href="service-details.html" target="_blank">
-                                    <i class="bx bx-chevron-right"></i>
-                                    Business Solution
-                                </a>
-                            </li>
-                            <li>
-                                <a href="service-details.html" target="_blank">
-                                    <i class="bx bx-chevron-right"></i>
-                                    Digital Services
-                                </a>
-                            </li>
-                            <li>
-                                <a href="compare.html" target="_blank">
-                                    <i class="bx bx-chevron-right"></i>
-                                    Business Reform
-                                </a>
-                            </li>
-                            <li>
-                                <a href="service-details.html" target="_blank">
-                                    <i class="bx bx-chevron-right"></i>
-                                    Web Development
-                                </a>
-                            </li>
-                            <li>
-                                <a href="service-details.html" target="_blank">
-                                    <i class="bx bx-chevron-right"></i>
-                                    Cloud Computing
-                                </a>
-                            </li>
-                            <li>
-                                <a href="service-details.html" target="_blank">
-                                    <i class="bx bx-chevron-right"></i>
-                                    Data Analysis
-                                </a>
-                            </li>
+                            {% for service in menu.listeServices() %}
+                                <li>
+                                    <a href="#" target="_blank">
+                                        <i class="bx bx-chevron-right"></i>
+                                        {{ service.titre }}
+                                    </a>
+                                </li>
+                            {% endfor %}
                         </ul>
                     </div>
                 </div>

@@ -32,14 +32,11 @@
                     {% for key, data in pagination.data %}
                         <tr>
                             <td >
-                                <label class="checkbox checkbox-lg checkbox-inline">
-                                    <input type="checkbox" value="1">
+                                <label class="checkbox checkbox-lg checkbox-inline ">
+                                    <input type="checkbox" value="{{ data.id }}" class="checkOne">
                                     <span></span>
                                 </label>
                             </td>
-
-
-
                             <td >
                                 {{ data.titre }}
                             </td>

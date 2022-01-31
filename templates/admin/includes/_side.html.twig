@@ -130,7 +130,7 @@
                                                 <li class="menu-item menu-item-submenu" aria-haspopup="true"
                                                     data-menu-toggle="hover">
                                                     <a href="{{ path(groupe.lien) }}" class="menu-link menu-toggle">
-                                                        <i class="menu-bullet {% if groupe.icon =="" %} menu-bullet-line {% else %} {{ groupe.icon }} {% endif %}">
+                                                        <i class="{% if groupe.icon =="default" %} menu-bullet  menu-bullet-line {% else %} {{ groupe.icon }} {% endif %}">
                                                             <span></span>
                                                         </i>&nbsp;
                                                         <span class="menu-text">{{ groupe.groupe |lower |capitalize }}</span>

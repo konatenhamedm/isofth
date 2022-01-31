@@ -80,8 +80,8 @@ class LoginController extends AbstractController
             $utilisateur->setActive(1);
             $mailerService->send(
                 'ESSAI ENVOI',
+                "konatenhamed@gmail.com",
                 $form['email']->getData(),
-                "mr.boune@isofth.com",
                 "admin/mail.html.twig",
                 [
                     'message' => 'bien recu',

@@ -18,6 +18,8 @@ class Module
      * @ORM\Column(type="integer")
      */
     private $id;
+
+
     public function getProperties(){
         return  ['titre'=> 'titre','parent'=> 'parent'];
     }

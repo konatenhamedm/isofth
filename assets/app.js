@@ -15,5 +15,16 @@ $('#datatable').DataTable({
     },
     "responsive": {
         "details": "true"
-    }
+    },
+    'columnDefs': [
+        {
+            'targets': 0,
+            'checkboxes': {
+                'selectRow': true
+            }
+        }
+    ],
+    'select': {
+        'style': 'multi'
+    },
 });
